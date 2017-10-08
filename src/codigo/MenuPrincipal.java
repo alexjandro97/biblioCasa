@@ -5,7 +5,13 @@
  */
 package codigo;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,13 +23,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
-        this.setLocation(500, 550);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setLocation(550, 200);
         this.setTitle("Biblioteca de Casa");
         setIconImage(new ImageIcon(getClass().getResource("/img/libros.png")).getImage());
+        //this.addBook.setSize(300, 400);
+       // this.addBook.setLocation(500, 500);
         initComponents();
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,16 +43,199 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        addBook = new javax.swing.JDialog();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        newBookName = new javax.swing.JTextField();
+        newBookAutor = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        newBookSite = new javax.swing.JTextField();
+        addBookBtn = new javax.swing.JButton();
+        updateBook = new javax.swing.JDialog();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        updateBookName = new javax.swing.JTextField();
+        updateBookAutor = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        updateBookSite = new javax.swing.JTextField();
+        updateBookBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         searchBookText = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        archivo = new javax.swing.JMenu();
+        salir = new javax.swing.JMenuItem();
+        editar = new javax.swing.JMenu();
+        addBookMain = new javax.swing.JMenuItem();
+        updateBookMain = new javax.swing.JMenuItem();
+        dropBookMain = new javax.swing.JMenuItem();
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setText("Agregar un libro");
+
+        jLabel3.setText("Titulo:");
+
+        jLabel4.setText("Autor:");
+
+        jLabel5.setText("Sitio:");
+
+        addBookBtn.setText("Agregar Libro");
+
+        javax.swing.GroupLayout addBookLayout = new javax.swing.GroupLayout(addBook.getContentPane());
+        addBook.getContentPane().setLayout(addBookLayout);
+        addBookLayout.setHorizontalGroup(
+            addBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addBookLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addBookLayout.createSequentialGroup()
+                        .addGroup(addBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 247, Short.MAX_VALUE))
+                    .addComponent(newBookName, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(newBookAutor, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(newBookSite, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addBookLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addBookBtn)
+                .addGap(159, 159, 159))
+        );
+        addBookLayout.setVerticalGroup(
+            addBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addBookLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newBookName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newBookAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newBookSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addBookBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setText("Actualizar un libro");
+
+        jLabel7.setText("Titulo:");
+
+        jLabel8.setText("Autor:");
+
+        jLabel9.setText("Sitio:");
+
+        updateBookBtn.setText("Actualiza");
+
+        javax.swing.GroupLayout updateBookLayout = new javax.swing.GroupLayout(updateBook.getContentPane());
+        updateBook.getContentPane().setLayout(updateBookLayout);
+        updateBookLayout.setHorizontalGroup(
+            updateBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updateBookLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(updateBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(updateBookLayout.createSequentialGroup()
+                        .addGroup(updateBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 231, Short.MAX_VALUE))
+                    .addComponent(updateBookName, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(updateBookAutor, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(updateBookSite, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateBookLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(updateBookBtn)
+                .addGap(159, 159, 159))
+        );
+        updateBookLayout.setVerticalGroup(
+            updateBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updateBookLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(updateBookName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(updateBookAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(updateBookSite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(updateBookBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Busca un libro:");
 
         searchBtn.setText("Buscar");
+        searchBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                searchBtnMousePressed(evt);
+            }
+        });
+
+        archivo.setText("Archivo");
+
+        salir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        salir.setText("Salir");
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                salirMousePressed(evt);
+            }
+        });
+        archivo.add(salir);
+
+        jMenuBar1.add(archivo);
+
+        editar.setText("Editar");
+
+        addBookMain.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        addBookMain.setText("Añadir Nuevo");
+        addBookMain.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                addBookMainMousePressed(evt);
+            }
+        });
+        editar.add(addBookMain);
+
+        updateBookMain.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        updateBookMain.setText("Actualizar Libro");
+        updateBookMain.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                updateBookMainMousePressed(evt);
+            }
+        });
+        editar.add(updateBookMain);
+
+        dropBookMain.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        dropBookMain.setText("Borrar Libro");
+        editar.add(dropBookMain);
+
+        jMenuBar1.add(editar);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,11 +263,61 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(searchBtn)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addContainerGap(313, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBtnMousePressed
+        String libro = searchBookText.getText();
+        Connection conexion; //Almacena la conexion al servidor de la BBDD
+        Statement estado; //Estado de la conexion
+        ResultSet resultado; //resultado de los atributos de la BBDD
+        System.out.println(libro);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/biblioteca", "root", "");
+            //realizo la conexion
+            estado = conexion.createStatement();
+            //realizo la consulta
+            resultado = estado.executeQuery("SELECT * FROM biblioteca.libros WHERE titulo ='"+libro+"'");
+            while (resultado.next()) {
+                String[] aux = new String[3];
+                aux[0] = resultado.getString("titulo");
+                aux[1] = resultado.getString("sitio");
+                aux[2] = resultado.getString("autor");
+                for (int i = 0; i < aux.length; i++) {
+                    System.out.println(aux[i]);
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            System.out.println("No se ha podido conectar con el Driver de la BBDD");
+        } catch (SQLException ex) {
+            System.out.println("No se pudo conectar a la BBDD");
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }//GEN-LAST:event_searchBtnMousePressed
+
+    private void salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMousePressed
+        System.exit(0);
+    }//GEN-LAST:event_salirMousePressed
+
+    private void addBookMainMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBookMainMousePressed
+       this.addBook.setVisible(true);
+       this.addBook.setSize(450, 350);
+       this.addBook.setLocation(500, 300);
+       this.addBook.setTitle("Agregar Libro - Biblioteca");
+       this.addBook.setIconImage(new ImageIcon(getClass().getResource("/img/libros.png")).getImage());
+    }//GEN-LAST:event_addBookMainMousePressed
+
+    private void updateBookMainMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBookMainMousePressed
+        this.updateBook.setVisible(true);
+       this.updateBook.setSize(450, 350);
+       this.updateBook.setLocation(500, 300);
+       this.updateBook.setTitle("Actualizar Libro - Biblioteca");
+       this.updateBook.setIconImage(new ImageIcon(getClass().getResource("/img/libros.png")).getImage());
+    }//GEN-LAST:event_updateBookMainMousePressed
 
     /**
      * @param args the command line arguments
@@ -113,9 +355,34 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JDialog addBook;
+    public static javax.swing.JButton addBookBtn;
+    private javax.swing.JMenuItem addBookMain;
+    public static javax.swing.JMenu archivo;
+    private javax.swing.JMenuItem dropBookMain;
+    public static javax.swing.JMenu editar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField searchBookText;
-    private javax.swing.JButton searchBtn;
+    public static javax.swing.JTextField newBookAutor;
+    public static javax.swing.JTextField newBookName;
+    public static javax.swing.JTextField newBookSite;
+    private javax.swing.JMenuItem salir;
+    public static javax.swing.JTextField searchBookText;
+    public static javax.swing.JButton searchBtn;
+    public static javax.swing.JDialog updateBook;
+    public static javax.swing.JTextField updateBookAutor;
+    public static javax.swing.JButton updateBookBtn;
+    private javax.swing.JMenuItem updateBookMain;
+    public static javax.swing.JTextField updateBookName;
+    public static javax.swing.JTextField updateBookSite;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,6 +18,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         this.setLocation(500, 550);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.setTitle("Biblioteca de Casa");
         setIconImage(new ImageIcon(getClass().getResource("/img/libros.png")).getImage());
         initComponents();
     }
